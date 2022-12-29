@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  homelabbootstrap:
+    image: homelabbootstrap
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    tty: true
