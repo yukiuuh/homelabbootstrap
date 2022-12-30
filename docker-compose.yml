@@ -6,4 +6,18 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    environment:
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+      - AZURE_SECRET=${AZURE_SECRET}
+      - AZURE_SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
+      - AZURE_TENANT=${AZURE_TENANT}
+      - OCI_CLI_KEY_CONTENT=${OCI_CLI_KEY_CONTENT}
+      - OCI_CLI_FINGERPRINT=${OCI_CLI_FINGERPRINT}
+      - OCI_CLI_REGION=${OCI_CLI_REGION}
+      - OCI_CLI_TENANCY=${OCI_CLI_TENANCY}
+      - OCI_CLI_USER=${OCI_CLI_USER}
+    volumes:
+      - type: bind
+        source: "./work"
+        target: "/home/debian/work"
     tty: true
