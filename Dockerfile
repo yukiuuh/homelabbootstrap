@@ -34,11 +34,11 @@ WORKDIR /home/$USERNAME/
 
 RUN pip install pywinrm ansible pyvmomi oci oci-cli 'ansible[azure]'&& \
     curl -sL 'https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion' > ~/.local/bin/az.completion  &&\
-    echo "export PATH=$PATH:/home/${USERNAME}/.local/bin" >> ~/.bashrc && \
     echo '[[ -e "$HOME/.local/lib/python3.9/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "$HOME/.local/lib/python3.9/site-packages/oci_cli/bin/oci_autocomplete.sh"' >> ~/.bashrc && \
     echo "source $HOME/.local/bin/az.completion" >> ~/.bashrc && \
     pwsh -c "Install-Module -Name VMware.PowerCLI -force" && \
     pwsh -c "Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP \$True -Confirm:\$False" && \
     mkdir work;
+ENV PATH $PATH:/home/$USERNAME/.local/bin
 
 CMD ["bash"]
